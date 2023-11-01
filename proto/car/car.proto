@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+import "proto/validate/validate.proto";
+
+option go_package="gopher-protobuf/protogen/car";
+
+message Car {
+    string car_id = 1 [
+        json_name = "car_id",
+        (validate.rules).string.uuid = true
+    ]
+
+    string brand = 2 [
+        (validate.rules).string = {
+            pattern: ""
+        }
+    ]
+}
